@@ -1,0 +1,28 @@
+group 'org.gwtproject.i18n'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: "maven"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies{
+    compile group: 'org.gwtproject.i18n', name: 'gwt-cldr', version: '1.0-SNAPSHOT'
+    // https://mvnrepository.com/artifact/com.google.elemental2/elemental2-core
+    compile group: 'com.google.elemental2', name: 'elemental2-core', version: '1.0.0-RC1'
+
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
